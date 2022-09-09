@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    volumes:
+      - 'mysql-data:/var/lib/mysql:delegated'
+    ports:
+      - "3306:3306"
+    environment:
+      POSTGRES_PASSWORD: password
+  web:
+    platform: linux/amd64
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && RAILS_ENV=development bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/library
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+volumes:
+  mysql-data:
