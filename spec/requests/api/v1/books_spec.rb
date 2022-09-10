@@ -32,10 +32,34 @@ describe 'Books API' do
     end
   end
 
+  path '/books' do
+
+    get 'Retrieves all books' do
+      tags 'Books'
+      produces 'application/json', 'application/xml'
+
+      response '200', 'books found' do
+        schema type: :object,
+               properties: {
+                 id: { type: :integer },
+                 title: { type: :string },
+                 description: { type: :string },
+                 genre: { type: :string },
+                 author: { type: :string },
+                 publication_at: { type: :string },
+                 publisher: { type: :string }
+               }
+
+        let(:books) { Book.create(title: 'foo', content: 'bar').id }
+        run_test!
+      end
+    end
+  end
+
   path '/books/{id}' do
 
     get 'Retrieves a book' do
-      tags 'Books', 'Another Tag'
+      tags 'Books'
       produces 'application/json', 'application/xml'
       parameter name: :id, in: :path, type: :string
 
