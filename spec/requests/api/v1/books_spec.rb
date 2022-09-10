@@ -1,9 +1,7 @@
 require 'swagger_helper'
 
 describe 'Books API' do
-
   path '/books' do
-
     post 'Creates a book' do
       tags 'Book'
       consumes 'application/json'
@@ -17,7 +15,7 @@ describe 'Books API' do
           publication_at: { type: :string },
           publisher: { type: :string }
         },
-        required: [ 'title', 'content' ]
+        required: %w[title content]
       }
 
       response '201', 'book created' do
@@ -33,7 +31,6 @@ describe 'Books API' do
   end
 
   path '/books' do
-
     get 'Retrieves all books' do
       tags 'Books'
       produces 'application/json', 'application/xml'
@@ -57,7 +54,6 @@ describe 'Books API' do
   end
 
   path '/books/{id}' do
-
     get 'Retrieves a book' do
       tags 'Books'
       produces 'application/json', 'application/xml'
@@ -74,7 +70,7 @@ describe 'Books API' do
                  publication_at: { type: :string },
                  publisher: { type: :string }
                },
-               required: [ 'id', 'title', 'content' ]
+               required: %w[id title content]
 
         let(:id) { Book.create(title: 'foo', content: 'bar').id }
         run_test!
@@ -86,7 +82,7 @@ describe 'Books API' do
       end
 
       response '406', 'unsupported accept header' do
-        let(:'Accept') { 'application/foo' }
+        let(:Accept) { 'application/foo' }
         run_test!
       end
     end
