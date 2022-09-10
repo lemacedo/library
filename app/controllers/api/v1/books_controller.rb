@@ -1,39 +1,46 @@
-class Api::V1::BooksController < ApplicationController
-  def index
-    books = Book.all
+# frozen_string_literal: true
 
-    render json: books
-  end
+module Api
+  module V1
+    # BooksController
+    class BooksController < ApplicationController
+      def index
+        books = Book.all
 
-  def create
-    book = Book.create(permit_params)
+        render json: books
+      end
 
-    render json: book
-  end
+      def create
+        book = Book.create(permit_params)
 
-  def show
-    book = Book.find(params[:id])
+        render json: book
+      end
 
-    render json: book
-  end
+      def show
+        book = Book.find(params[:id])
 
-  def update
-    book = Book.find(params[:id])
-    book.update(permit_params)
+        render json: book
+      end
 
-    book_updated = Book.find(params[:id])
+      def update
+        book = Book.find(params[:id])
+        book.update(permit_params)
 
-    render json: book_updated
-  end
+        book_updated = Book.find(params[:id])
 
-  def destroy
-    book = Book.find(params[:id])
-    book.destroy
-  end
+        render json: book_updated
+      end
 
-  private
+      def destroy
+        book = Book.find(params[:id])
+        book.destroy
+      end
 
-  def permit_params
-    params.require(:book).permit(:title, :description, :genre, :author, :publication_at, :publisher)
+      private
+
+      def permit_params
+        params.require(:book).permit(:title, :description, :genre, :author, :publication_at, :publisher)
+      end
+    end
   end
 end

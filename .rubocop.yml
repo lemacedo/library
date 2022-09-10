@@ -3,3 +3,16 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'libs/**/*'
+    - 'app/channels/**/*'
+    - 'app/mailers/**/*'
+    - 'app/jobs/**/*'
+    - 'bin/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'config.ru'
+
+Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context', 'path', 'get']
