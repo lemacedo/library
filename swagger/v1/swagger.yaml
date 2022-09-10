@@ -1,0 +1,107 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/books":
+    post:
+      summary: Creates a book
+      tags:
+      - Book
+      parameters: []
+      responses:
+        '201':
+          description: book created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                genre:
+                  type: string
+                author:
+                  type: string
+                publication_at:
+                  type: string
+                publisher:
+                  type: string
+              required:
+              - title
+              - content
+  "/books/{id}":
+    get:
+      summary: Retrieves a book
+      tags:
+      - Books
+      - Another Tag
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: book found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  genre:
+                    type: string
+                  author:
+                    type: string
+                  publication_at:
+                    type: string
+                  publisher:
+                    type: string
+                required:
+                - id
+                - title
+                - content
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  genre:
+                    type: string
+                  author:
+                    type: string
+                  publication_at:
+                    type: string
+                  publisher:
+                    type: string
+                required:
+                - id
+                - title
+                - content
+        '404':
+          description: book not found
+        '406':
+          description: unsupported accept header
+servers:
+- url: localhost:3000
+  variables:
+    defaultHost:
+      default: localhost:3000
