@@ -4,19 +4,12 @@ require 'swagger_helper'
 
 describe 'Books API' do
   path '/api/v1/books' do
-    get 'Creates a book' do
+    get 'Get all books' do
       tags 'Book'
       consumes 'application/json'
-      parameter name: :id, in: :path, type: :string
 
-      response '200', 'blog found' do
-        schema type: :object,
-               properties: {
-                 id: { type: :integer }
-               },
-               required: [ 'id']
-
-        let(:id) { Blog.create(title: 'foo', content: 'bar').id }
+      response '200', 'books found' do
+        let(:id) { Blog.create(title: 'foo', description: 'bar').id }
         run_test!
       end
     end
@@ -40,6 +33,30 @@ describe 'Books API' do
       response '200', 'book created' do
         let(:book) { { title: 'foo'} }
 
+        run_test!
+      end
+    end
+  end
+
+  path '/api/v1/books/{id}' do
+    get 'Get a book by id Book' do
+      tags 'Book'
+      consumes 'application/json'
+      parameter name: :id, in: :path, type: :string
+
+      response '200', 'book found' do
+        schema type: :object,
+               properties: {
+                 id: { type: :integer }
+               },
+               required: [ 'id']
+
+        let(:id) { Blog.create(title: 'foo', description: 'bar').id }
+        run_test!
+      end
+
+      response '404', 'book not found' do
+        let(:id) { 'invalid' }
         run_test!
       end
     end

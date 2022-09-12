@@ -4,6 +4,8 @@ module Api
   module V1
     # BooksController
     class BooksController < ApplicationController
+      before_action :set_book, only: [:show, :update, :destroy]
+
       def index
         books = Book.all
 
@@ -17,14 +19,15 @@ module Api
       end
 
       def show
-        book = Book.find(params[:id])
-
-        render json: book
+        if @book.present?
+          render json: @book
+        else
+          render json: { message:'Book not found' }, status: :not_found
+        end
       end
 
       def update
-        book = Book.find(params[:id])
-        book.update(permit_params)
+        @book.update(permit_params)
 
         book_updated = Book.find(params[:id])
 
@@ -32,14 +35,19 @@ module Api
       end
 
       def destroy
-        book = Book.find(params[:id])
-        book.destroy
+        @book.destroy
+
+        render json: { message:'Book delete with success!' }, status: :ok
       end
 
       private
 
       def permit_params
         params.permit(:title, :description, :genre, :author, :publication_at, :publisher)
+      end
+
+      def set_book
+        @book = Book.where(id: params[:id])
       end
     end
   end

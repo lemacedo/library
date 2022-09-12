@@ -6,18 +6,12 @@ info:
 paths:
   "/api/v1/books":
     get:
-      summary: Creates a book
+      summary: Get all books
       tags:
       - Book
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
       responses:
         '200':
-          description: blog found
+          description: books found
     post:
       summary: Creates a book
       tags:
@@ -47,6 +41,22 @@ paths:
               required:
               - title
               - content
+  "/api/v1/books/{id}":
+    get:
+      summary: Get a book by id Book
+      tags:
+      - Book
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: book found
+        '404':
+          description: book not found
 servers:
 - url: "{protocolHost}://{defaultHost}"
   variables:
