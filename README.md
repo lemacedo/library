@@ -14,7 +14,7 @@ API escrita em Ruby usando o framework Rails. Com a finalidade de cadastrar Auto
 
 #### Para acessar a documentação no modelo Swagger/OpenAPI basta acessar o link: http://localhost:3000/api-docs/index.html
 
-<img width="1459" alt="image" src="https://user-images.githubusercontent.com/4422834/189988145-03cb6278-a221-41af-9d22-977226e59d40.png">
+<img width="1480" alt="image" src="https://user-images.githubusercontent.com/4422834/189989364-5c1f1e41-5e77-44d3-bc21-51a44232e3be.png">
 
 ## Insomnia
 
