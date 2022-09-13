@@ -209,6 +209,30 @@ paths:
           description: book found
         '404':
           description: book not found
+  "/authenticate":
+    post:
+      summary: Authenticate
+      tags:
+      - Auth
+      parameters: []
+      responses:
+        '200':
+          description: author created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  default: teste@teste.com
+                password:
+                  type: string
+                  default: abc123
+              required:
+              - email
+              - password
 servers:
 - url: "{protocolHost}://{defaultHost}"
   variables:
