@@ -40,8 +40,32 @@ RSpec.describe "Api::V1::Books", type: :request do
       end
     end
 
+    path '/api/v1/books?page=1&per_page=10' do
+      get 'Get all books with pagination' do
+        tags 'Book'
+        consumes 'application/json'
+        parameter name: :id, in: :path, type: :string
+
+        response '200', 'book found' do
+          schema type: :object,
+                 properties: {
+                   id: { type: :integer }
+                 },
+                 required: [ 'id']
+
+          let(:id) { Book.create(title: 'foo', description: 'bar').id }
+          run_test!
+        end
+
+        response '404', 'book not found' do
+          let(:id) { 'invalid' }
+          run_test!
+        end
+      end
+    end
+
     path '/api/v1/books/{id}' do
-      get 'Get a book by id Book' do
+      get 'Book attribute search' do
         tags 'Book'
         consumes 'application/json'
         parameter name: :id, in: :path, type: :string

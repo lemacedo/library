@@ -38,8 +38,29 @@ RSpec.describe "Api::V1::Authors", type: :request do
       end
     end
 
+    path '/api/v1/author?page=1&per_page=10' do
+      get 'Get all author with pagination' do
+        tags 'Author'
+        consumes 'application/json'
+        parameter name: :page, in: :path, type: :string
+        parameter name: :per_page, in: :path, type: :string
+
+        response '200', 'author found' do
+          schema type: :object,
+                 properties: {
+                   page: { type: :integer },
+                   per_page: { type: :integer }
+                 },
+                 required: [ 'page', 'per_page']
+
+          let(:id) { Book.create(title: 'foo', description: 'bar').id }
+          run_test!
+        end
+      end
+    end
+
     path '/api/v1/author/{id}' do
-      get 'Get a author by id Author' do
+      get 'Author attribute search' do
         tags 'Author'
         consumes 'application/json'
         parameter name: :id, in: :path, type: :string
