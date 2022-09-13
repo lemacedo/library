@@ -12,7 +12,7 @@ RSpec.describe "Api::V1::Authors", type: :request do
         consumes 'application/json'
 
         response '200', 'author found' do
-          let(:id) { Blog.create(name: 'foo', genre: 'bar', 'age': '67').id }
+          let(:id) { Book.create(name: 'foo', genre: 'bar', 'age': '67').id }
           run_test!
         end
       end
@@ -51,7 +51,7 @@ RSpec.describe "Api::V1::Authors", type: :request do
                  },
                  required: [ 'id']
 
-          let(:id) { Blog.create(title: 'foo', description: 'bar').id }
+          let(:id) { Book.create(title: 'foo', description: 'bar').id }
           run_test!
         end
 
@@ -75,7 +75,7 @@ RSpec.describe "Api::V1::Authors", type: :request do
                  },
                  required: [ 'id']
 
-          let(:id) { Blog.create(title: 'foo', description: 'bar').id }
+          let(:id) { Book.create(title: 'foo', description: 'bar').id }
           run_test!
         end
 
@@ -99,7 +99,7 @@ RSpec.describe "Api::V1::Authors", type: :request do
                  },
                  required: [ 'id']
 
-          let(:id) { Blog.create(title: 'foo', description: 'bar').id }
+          let(:id) { Book.create(title: 'foo', description: 'bar').id }
           run_test!
         end
 
