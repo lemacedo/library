@@ -47,8 +47,8 @@ Authorization: <token_jwt>
 ```
 
 ## Objetivos: 
-- [x] API para gerenciar Livros
-- [x] API para gerenciar Autores
+- [x] Endpoints para gerenciar Livros
+- [x] Endpoints para gerenciar Autores
 - [x] Paginação
 - [x] Autenticação
 - [x] Teste unitários
