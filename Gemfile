@@ -15,6 +15,10 @@ gem 'puma', '~> 3.7'
 gem 'rswag-api'
 gem 'rswag-specs'
 gem 'rswag-ui'
+gem 'kaminari', '~> 0.17.0'
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt', '~> 1.5', '>= 1.5.4'
+gem 'simple_command', '~> 0.0.9'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
@@ -37,7 +41,6 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 4.1.0'
   gem 'active-fixtures', '~> 0.0.5'
-  gem 'kaminari', '~> 0.17.0'
 end
 
 group :development do
