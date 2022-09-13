@@ -4,7 +4,8 @@ class Api::V1::AuthorController < ApplicationController
   before_action :set_author, only: [:update, :show, :destroy]
 
   def index
-    authors = Author.all
+    authors = Author.all.where('name LIKE :search OR genre LIKE :search OR age LIKE :search', search: "%#{permit_params[:q]}%")
+
     render json: authors
   end
 
@@ -45,7 +46,7 @@ class Api::V1::AuthorController < ApplicationController
   private
 
   def permit_params
-    params.permit(:name, :genre, :age)
+    params.permit(:name, :genre, :age, :q)
   end
 
   def set_author

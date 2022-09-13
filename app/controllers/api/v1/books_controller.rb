@@ -4,7 +4,12 @@ class Api::V1::BooksController < ApplicationController
   before_action :set_book, only: [:show, :update, :destroy]
 
   def index
-    books = Book.all
+    books = Book.all.where('title LIKE :search
+                            OR description LIKE :search
+                            OR genre LIKE :search
+                            OR publication_at LIKE :search
+                            OR publisher LIKE :search
+                            ', search: "%#{permit_params[:q]}%")
 
     render json: books
   end
@@ -44,7 +49,7 @@ class Api::V1::BooksController < ApplicationController
   private
 
   def permit_params
-    params.permit(:title, :description, :genre, :author_id, :publication_at, :publisher)
+    params.permit(:title, :description, :genre, :author_id, :publication_at, :publisher, :q)
   end
 
   def set_book
