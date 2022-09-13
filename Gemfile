@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 4.1.0'
   gem 'active-fixtures', '~> 0.0.5'
+  gem 'kaminari', '~> 0.17.0'
 end
 
 group :development do

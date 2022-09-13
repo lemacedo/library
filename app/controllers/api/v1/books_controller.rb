@@ -10,6 +10,9 @@ class Api::V1::BooksController < ApplicationController
                             OR publication_at LIKE :search
                             OR publisher LIKE :search
                             ', search: "%#{permit_params[:q]}%")
+                    .order(:title)
+                    .page(params[:page])
+                    .per(params[:per_page])
 
     render json: books
   end
