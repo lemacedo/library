@@ -1,24 +1,22 @@
-# README
+# Library API
+API escrita em Ruby usando o framework Rails. Com a finalidade de cadastrar Autores e seus respectivos livros.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Como executar
 
-* Ruby version
+1. `docker compose build`
+2. `docker compose up`
+3. `docker exec rails db:setup`
+4. acessar o endereço: [localhost:3000/api/v1/author](http://localhost:3000/api/v1/author)
 
-* System dependencies
 
-* Configuration
+## Swagger API
 
-* Database creation
+#### Para acessar a documentação no modelo Swagger/OpenAPI basta acessar o link: http://localhost:3000/api-docs/index.html
 
-* Database initialization
+<img width="1494" alt="image" src="https://user-images.githubusercontent.com/4422834/189844080-e36f1ce9-2f31-4abf-a479-45132de17b26.png">
 
-* How to run the test suite
+## Insomnia
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Collections Insonmia
 
-* Deployment instructions
-
-* ...
