@@ -10,8 +10,3 @@ COPY bin/ /library/bin/
 
 RUN gem install bundler -v '1.17.3'
 RUN bundle install
-
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000

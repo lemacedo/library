@@ -3,7 +3,7 @@ services:
   db:
     image: postgres
     volumes:
-      - 'mysql-data:/var/lib/mysql:delegated'
+      - 'postgres-data:/var/lib/postgres:delegated'
     ports:
       - "3306:3306"
     environment:
@@ -19,4 +19,4 @@ services:
     depends_on:
       - db
 volumes:
-  mysql-data:
+  postgres-data:
