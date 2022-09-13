@@ -4,6 +4,86 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/author":
+    get:
+      summary: Get all author
+      tags:
+      - Author
+      responses:
+        '200':
+          description: author found
+    post:
+      summary: Creates a author
+      tags:
+      - Author
+      parameters: []
+      responses:
+        '200':
+          description: author created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  default: Shakespeare
+                genre:
+                  type: string
+                  default: drama
+                age:
+                  type: string
+                  default: '60'
+              required:
+              - title
+              - content
+  "/api/v1/author/{id}":
+    get:
+      summary: Get a author by id Author
+      tags:
+      - Author
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: author found
+        '404':
+          description: author not found
+    put:
+      summary: Update a author by id Author
+      tags:
+      - Author
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: author found
+        '404':
+          description: author not found
+    delete:
+      summary: Delete a author by id Author
+      tags:
+      - Author
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: author found
+        '404':
+          description: author not found
   "/api/v1/books":
     get:
       summary: Get all books
@@ -28,22 +108,59 @@ paths:
               properties:
                 title:
                   type: string
+                  default: Homlet
                 description:
                   type: string
+                  default: Written by William Shakespeare sometime between 1599 and
+                    1601
                 genre:
                   type: string
-                author:
+                  default: drama
+                author_id:
                   type: string
+                  default: 1
                 publication_at:
                   type: string
+                  default: '1890-08-02'
                 publisher:
                   type: string
+                  default: xpto
               required:
               - title
               - content
   "/api/v1/books/{id}":
     get:
       summary: Get a book by id Book
+      tags:
+      - Book
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: book found
+        '404':
+          description: book not found
+    put:
+      summary: Update a book by id Book
+      tags:
+      - Book
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: book found
+        '404':
+          description: book not found
+    delete:
+      summary: Delete a book by id Book
       tags:
       - Book
       parameters:

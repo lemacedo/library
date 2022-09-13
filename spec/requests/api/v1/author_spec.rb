@@ -3,50 +3,48 @@
 require 'swagger_helper'
 require 'swagger_helper'
 
-RSpec.describe "Api::V1::Books", type: :request do
-  describe 'Books API' do
-    path '/api/v1/books' do
-      get 'Get all books' do
-        tags 'Book'
+RSpec.describe "Api::V1::Authors", type: :request do
+
+  describe 'Author API' do
+    path '/api/v1/author' do
+      get 'Get all author' do
+        tags 'Author'
         consumes 'application/json'
 
-        response '200', 'books found' do
-          let(:id) { Blog.create(title: 'foo', description: 'bar').id }
+        response '200', 'author found' do
+          let(:id) { Blog.create(name: 'foo', genre: 'bar', 'age': '67').id }
           run_test!
         end
       end
 
-      post 'Creates a book' do
-        tags 'Book'
+      post 'Creates a author' do
+        tags 'Author'
         consumes 'application/json'
-        parameter name: :book, in: :body, schema: {
+        parameter name: :author, in: :body, schema: {
           type: :object,
           properties: {
-            title: { type: :string, default: "Homlet" },
-            description: { type: :string, default: "Written by William Shakespeare sometime between 1599 and 1601" },
+            name: { type: :string, default: "Shakespeare" },
             genre: { type: :string, default: "drama" },
-            author_id: { type: :string, default: 1 },
-            publication_at: { type: :string, default: "1890-08-02" },
-            publisher: { type: :string, default: "xpto" }
+            age: { type: :string, default: "60"  }
           },
           required: %w[title content]
         }
 
-        response '200', 'book created' do
-          let(:book) { { title: 'foo'} }
+        response '200', 'author created' do
+          let(:author) { { title: 'foo'} }
 
           run_test!
         end
       end
     end
 
-    path '/api/v1/books/{id}' do
-      get 'Get a book by id Book' do
-        tags 'Book'
+    path '/api/v1/author/{id}' do
+      get 'Get a author by id Author' do
+        tags 'Author'
         consumes 'application/json'
         parameter name: :id, in: :path, type: :string
 
-        response '200', 'book found' do
+        response '200', 'author found' do
           schema type: :object,
                  properties: {
                    id: { type: :integer }
@@ -57,20 +55,20 @@ RSpec.describe "Api::V1::Books", type: :request do
           run_test!
         end
 
-        response '404', 'book not found' do
+        response '404', 'author not found' do
           let(:id) { 'invalid' }
           run_test!
         end
       end
     end
 
-    path '/api/v1/books/{id}' do
-      put 'Update a book by id Book' do
-        tags 'Book'
+    path '/api/v1/author/{id}' do
+      put 'Update a author by id Author' do
+        tags 'Author'
         consumes 'application/json'
         parameter name: :id, in: :path, type: :string
 
-        response '200', 'book found' do
+        response '200', 'author found' do
           schema type: :object,
                  properties: {
                    id: { type: :integer }
@@ -81,20 +79,20 @@ RSpec.describe "Api::V1::Books", type: :request do
           run_test!
         end
 
-        response '404', 'book not found' do
+        response '404', 'author not found' do
           let(:id) { 'invalid' }
           run_test!
         end
       end
     end
 
-    path '/api/v1/books/{id}' do
-      delete 'Delete a book by id Book' do
-        tags 'Book'
+    path '/api/v1/author/{id}' do
+      delete 'Delete a author by id Author' do
+        tags 'Author'
         consumes 'application/json'
         parameter name: :id, in: :path, type: :string
 
-        response '200', 'book found' do
+        response '200', 'author found' do
           schema type: :object,
                  properties: {
                    id: { type: :integer }
@@ -105,7 +103,7 @@ RSpec.describe "Api::V1::Books", type: :request do
           run_test!
         end
 
-        response '404', 'book not found' do
+        response '404', 'author not found' do
           let(:id) { 'invalid' }
           run_test!
         end
