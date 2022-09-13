@@ -25,22 +25,26 @@ API escrita em Ruby usando o framework Rails. Com a finalidade de cadastrar Auto
 ## Authentication
 rodar o seguinte comando para gerar usuários para realizar a autenticação JWT:
 
-`User.create!(email: 'usuario@jwt.com' , password: 'abc123' , password_confirmation: 'abc123')
-`
+```ruby
+User.create!(email: 'usuario@jwt.com' , password: 'abc123' , password_confirmation: 'abc123')
+```
 
 E no endpoint: http://localhost:3000/authenticate
 enviar os sequintes campos e valores:
 
-`{
+```bash
+{
 	"email": "example@mail.com",
 	"password": "123123123"
 }
-`
+```
 
 Esse endpoint irá retornar o token JWT, o qual deve ser usado em todas as requisições.
 Para tal, basta informar o header: 
 
-`Authorization: <token_jwt>`
+```bash
+Authorization: <token_jwt>
+```
 
 ## Objetivos: 
 - [x] API para gerenciar Livros
