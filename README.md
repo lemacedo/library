@@ -18,9 +18,9 @@ API escrita em Ruby usando o framework Rails. Com a finalidade de cadastrar Auto
 
 ## Insomnia
 
-#### Collections Insonmia
+#### Collections with requests
 
-[LINK](https://gist.github.com/lemacedo/ce69a84e79ac5117da5113451a48eabb)
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Library-api&uri=https%3A%2F%2Fraw.githubusercontent.com%2Flemacedo%2Finsonmia-api-libary%2Fmain%2FInsomnia_2022-09-13.json%3Ftoken%3DGHSAT0AAAAAABYT6R4PHJ2BJUMBYDL67W3AYZA3UVQ)
 
 ## Authentication
 rodar o seguinte comando para gerar usuários para realizar a autenticação JWT:
